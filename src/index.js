@@ -7,20 +7,16 @@ export function install (Vue, options) {
         return;
     }
     plugin.installed = true;
-    Vue.vp = {
-        sections: [],
-        panels: []
-    };
 
     Vue.directive('vp-section', {
-        bind(el) {
-            Vue.vp.sections.push(el);
+        bind(el, binding) {
+            el.setAttribute('data-vp-section', binding.value)
         }
     });
 
     Vue.directive('vp-panel', {
-        bind(el) {
-            Vue.vp.panels.push(el);
+        bind(el, binding) {
+            el.setAttribute('data-vp-panel', binding.value)
         }
     });
 

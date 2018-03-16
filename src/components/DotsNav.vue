@@ -1,6 +1,6 @@
 <template>
     <ul class="vp--dots-list">
-        <li class="vp--dot" v-for="(panel, index) in panels" :key="index" :aria-label="panel.vpPanel"></li>
+        <li class="vp--dot" v-for="(panel, index) in vp.panels" :key="index" :aria-label="panel.vpPanel"></li>
     </ul>
 </template>
 
@@ -9,13 +9,15 @@ import Vue from 'vue'
 export default Vue.extend({
     data() {
         return {
-            sections: new NodeList,
-            panels: new NodeList
+            sections: [],
+            panels: []
         }
     },
     created() {
-        this.sections = this.getSections();
-        this.panels = this.getPanels();
+        this.sections = document.querySelectorAll('[data-vp-section]');
+        this.sections.forEach(element => {
+            element.panels = element.querySelectorAll('[data-vp-panel]');
+        });
     }
 })
 </script>
