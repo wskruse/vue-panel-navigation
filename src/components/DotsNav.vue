@@ -1,9 +1,18 @@
 <template>
     <div class="vp--dots-list">
         <ul class="vp--dots-section" v-for="(section, index) in sections" :key="index">
-            <li class="vp--dot vp--section" @click="scrollTo(section)" :aria-label="section.vpSection"></li>
-            <li class="vp--dot vp--section"
-                v-for="(panel, index) in section.panels" :key="index" :aria-label="panel.vpPanel"></li>
+            <li
+                :class="['vp--dot', 'vp--section', 'vp--section-active']"
+                :aria-label="section.vpSection"
+                @click="scrollTo(section)"
+            ></li>
+            <li
+                v-for="(panel, index) in section.panels"
+                :key="index"
+                :aria-label="panel.vpPanel"
+                :class="['vp--dot', 'vp--panel', 'vp--panel-active']"
+                @click="scrollTo(panel)"
+            ></li>
         </ul>
     </div>
 </template>
@@ -13,8 +22,7 @@ import Vue from 'vue'
 export default Vue.extend({
     data() {
         return {
-            sections: [],
-            panels: []
+            sections: []
         }
     },
     methods: {
@@ -23,7 +31,7 @@ export default Vue.extend({
         }
     },
     created() {
-        this.sections = document.querySelectorAll('[data-vp-section]');
+        this.$set(this, 'sections', document.querySelectorAll('[data-vp-section]'));
         this.sections.forEach(element => {
             element.panels = element.querySelectorAll('[data-vp-panel]');
         });
