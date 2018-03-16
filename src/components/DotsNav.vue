@@ -1,7 +1,11 @@
 <template>
-    <ul class="vp--dots-list">
-        <li class="vp--dot" v-for="(panel, index) in vp.panels" :key="index" :aria-label="panel.vpPanel"></li>
-    </ul>
+    <div class="vp--dots-list">
+        <ul class="vp--dots-section" v-for="(section, index) in sections" :key="index">
+            <li class="vp--dot vp--section" @click="scrollTo(section)" :aria-label="section.vpSection"></li>
+            <li class="vp--dot vp--section"
+                v-for="(panel, index) in section.panels" :key="index" :aria-label="panel.vpPanel"></li>
+        </ul>
+    </div>
 </template>
 
 <script lang="ts">
@@ -11,6 +15,11 @@ export default Vue.extend({
         return {
             sections: [],
             panels: []
+        }
+    },
+    methods: {
+        scrollTo(elem) {
+            window.scrollTo(elem.offsetTop);
         }
     },
     created() {
