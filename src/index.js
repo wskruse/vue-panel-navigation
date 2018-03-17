@@ -13,10 +13,10 @@ export function install (Vue, options) {
         bind(el, binding) {
             el.setAttribute('data-vp-section', binding.value);
             watcher.enterViewport(() => {
-                el.classlist.add('vp--active');
+                el.classList.add('vp--active');
             });
             watcher.exitViewport(() => {
-                el.classlist.remove('vp--active');
+                el.classList.remove('vp--active');
             });
         }
     });
@@ -26,10 +26,10 @@ export function install (Vue, options) {
             el.setAttribute('data-vp-panel', binding.value);
             let watcher = scrollmonitor.create(el);
             watcher.enterViewport(() => {
-                el.classlist.add('vp--active');
+                el.classList.add('vp--active');
             });
             watcher.exitViewport(() => {
-                el.classlist.remove('vp--active');
+                el.classList.remove('vp--active');
             });
         }
     });

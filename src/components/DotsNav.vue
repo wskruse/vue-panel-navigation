@@ -2,7 +2,7 @@
     <div class="vp--dots-list">
         <ul class="vp--dots-section" v-for="(section, index) in sections" :key="index">
             <li
-                :class="['vp--dot', 'vp--section', 'vp--section-active']"
+                :class="['vp--dot', 'vp--section', 'vp--section-active': hasClass(section, 'vp--active')]"
                 :aria-label="section.vpSection"
                 @click="scrollTo(section)"
             ></li>
@@ -28,6 +28,9 @@ export default Vue.extend({
     methods: {
         scrollTo(elem) {
             window.scrollTo(elem.offsetTop);
+        },
+        hasClass(elem, class) {
+            return elem.classList.contains(class);
         }
     },
     created() {
