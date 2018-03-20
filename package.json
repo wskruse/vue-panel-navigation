@@ -35,8 +35,5 @@
     "shortid": "^2.2.8",
     "smoothscroll": "^0.4.0",
     "vue": "^2.5.16"
-  },
-  "peerDependencies": {
-    "vue": "^2.5.16"
   }
 }
