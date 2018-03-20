@@ -2,15 +2,15 @@
     <ul></ul>
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
-export default Vue.extend({
+<script>
+import Vue from 'vue';
+export default {
     data() {
         return {
 
         }
     }
-})
+}
 </script>
 
 <style lang="sass">

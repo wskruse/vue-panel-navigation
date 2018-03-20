@@ -4,7 +4,7 @@
   "description": "A vue fullscreen-esque navigation plugin",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "serve": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
   "repository": {
     "type": "git",
@@ -22,10 +22,14 @@
   },
   "homepage": "https://github.com/pxslip/vue-panel-navigation#readme",
   "devDependencies": {
-    "eslint": "^4.18.2"
+    "cross-env": "^5.1.4",
+    "eslint": "^4.18.2",
+    "laravel-mix": "^2.1.9",
+    "rollup": "^0.57.1"
   },
   "dependencies": {
     "scrollmonitor": "^1.2.4",
+    "vue": "^2.5.16"
   },
   "peerDependencies": {
     "vue": "^2.5.16"

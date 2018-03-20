@@ -1,9 +1,10 @@
+import Vue from 'vue';
 import DotsNav from './components/DotsNav';
-import TextNav from './componentsTextNav';
+import TextNav from './components/TextNav';
 import scrollmonitor from 'scrollmonitor';
 
-export function install (Vue, options) {
-    let plugin = this;
+export default function install (Vue, options) {
+    let plugin = install;
     if (plugin.installed) {
         return;
     }
@@ -11,7 +12,9 @@ export function install (Vue, options) {
 
     Vue.directive('vp-section', {
         bind(el, binding) {
+            console.log('vp-section.bind');
             el.setAttribute('data-vp-section', binding.value);
+            let watcher = scrollmonitor.create(el);
             watcher.enterViewport(() => {
                 el.classList.add('vp--active');
             });
@@ -22,7 +25,8 @@ export function install (Vue, options) {
     });
 
     Vue.directive('vp-panel', {
-        bind(el, binding) {
+        bind(el, binding, vnode, oldVnode) {
+            console.log('vp-panel.bind');
             el.setAttribute('data-vp-panel', binding.value);
             let watcher = scrollmonitor.create(el);
             watcher.enterViewport(() => {

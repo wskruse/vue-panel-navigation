@@ -2,7 +2,7 @@
     <div class="vp--dots-list">
         <ul class="vp--dots-section" v-for="(section, index) in sections" :key="index">
             <li
-                :class="['vp--dot', 'vp--section', 'vp--section-active': hasClass(section, 'vp--active')]"
+                :class="['vp--dot', 'vp--section', {'vp--section-active': hasClass(section, 'vp--active')}]"
                 :aria-label="section.vpSection"
                 @click="scrollTo(section)"
             ></li>
@@ -17,9 +17,9 @@
     </div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
-export default Vue.extend({
+<script>
+import Vue from 'vue';
+export default {
     data() {
         return {
             sections: []
@@ -29,8 +29,8 @@ export default Vue.extend({
         scrollTo(elem) {
             window.scrollTo(elem.offsetTop);
         },
-        hasClass(elem, class) {
-            return elem.classList.contains(class);
+        hasClass(elem, classToAdd) {
+            return elem.classList.contains(classToAdd);
         }
     },
     created() {
@@ -39,7 +39,7 @@ export default Vue.extend({
             element.panels = element.querySelectorAll('[data-vp-panel]');
         });
     }
-})
+}
 </script>
 
 <style lang="sass">
