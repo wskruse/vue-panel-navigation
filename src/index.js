@@ -2,6 +2,7 @@ import Vue from 'vue';
 import DotsNav from './components/DotsNav';
 import TextNav from './components/TextNav';
 import scrollmonitor from 'scrollmonitor';
+import shortid from 'shortid';
 
 export default function install(Vue, options) {
     let plugin = install;
@@ -40,6 +41,10 @@ export default function install(Vue, options) {
         }
 
         return null;
+    }
+
+    Vue.prototype.$shortId = () => {
+        return shortid.generate();
     }
 
     // decide if the addPanel method should be prototypical, or global, the method should take the panel and an optional section

@@ -7,7 +7,7 @@
 <script>
     export default {
         created() {
-            
+            this.$el.dataset.uuid = this.$shortId();
             let watcher = scrollmonitor.create(el);
             watcher.enterViewport(() => {
                 el.classList.add("vp--active");

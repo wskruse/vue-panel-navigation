@@ -22,7 +22,8 @@ import Vue from 'vue';
 export default {
     data() {
         return {
-            sections: []
+            sections: Vue.vp.sections,
+            panels: Vue.vp.panels
         }
     },
     methods: {
@@ -32,12 +33,6 @@ export default {
         hasClass(elem, classToAdd) {
             return elem.classList.contains(classToAdd);
         }
-    },
-    created() {
-        this.$set(this, 'sections', document.querySelectorAll('[data-vp-section]'));
-        this.sections.forEach(element => {
-            element.panels = element.querySelectorAll('[data-vp-panel]');
-        });
     }
 }
 </script>
