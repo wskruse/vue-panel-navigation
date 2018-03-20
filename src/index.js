@@ -1,8 +1,12 @@
 import Vue from 'vue';
 import DotsNav from './components/DotsNav';
 import TextNav from './components/TextNav';
+import Section from './components/Section';
+import Panel from './components/Panel';
 import scrollmonitor from 'scrollmonitor';
 import shortid from 'shortid';
+import get from 'lodash.get';
+import smoothscroll from 'smoothscroll';
 
 export default function install(Vue, options) {
     let plugin = install;
@@ -10,8 +14,9 @@ export default function install(Vue, options) {
         return;
     }
     plugin.installed = true;
-    plugin.sections = [];
-    plugin.panels = {};
+    Vue.set(Vue, 'vp', {});
+    Vue.set(Vue.vp, 'sections', []);
+    Vue.set(Vue.vp, 'panels', {});
 
     /**
      * @param {String} selector the dom selector to match parents against
@@ -50,9 +55,31 @@ export default function install(Vue, options) {
     // decide if the addPanel method should be prototypical, or global, the method should take the panel and an optional section
     // if the section does not exist, or is not passed, add to a default bucket, otherwise nest under the section
     Vue.prototype.$addPanel = (panel, section) => {
-
+        let key = get(section, 'dataset.uuid', 'default');
+        if (! Vue.vp.panels[key]) {
+            Vue.set(Vue.vp.panels, key, []);
+        }
+        Vue.vp.panels[key].push(panel);
     }
+    Vue.prototype.$addSection = (section) => {
+        Vue.vp.sections.push(section);
+        Vue.set(Vue.vp.panels, section.dataset.uuid, []);
+        for (let i = 0; i < Vue.vp.panels['default'].length; i++) {
+            let panel = Vue.vp.panels.default[i];
+            if (section.contains(panel)) {
+                Vue.vp.panels[section.dataset.uuid].push(panel);
+                Vue.vp.panels.default.splice(i, 1);
+                i--;
+            }
+        }
+    }
+
+    Vue.prototype.$scrollTo = function (elem) {
+        smoothscroll(elem);
+    };
 
     Vue.component('VpDotsNav', DotsNav);
     Vue.component('VpTextNav', TextNav);
+    Vue.component('VpPanel', Panel);
+    Vue.component('VpSection', Section);
 }

@@ -2,7 +2,7 @@
   "name": "vue-panel-navigation",
   "version": "1.0.0",
   "description": "A vue fullscreen-esque navigation plugin",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
@@ -30,8 +30,10 @@
     "rollup": "^0.57.1"
   },
   "dependencies": {
+    "lodash.get": "^4.4.2",
     "scrollmonitor": "^1.2.4",
     "shortid": "^2.2.8",
+    "smoothscroll": "^0.4.0",
     "vue": "^2.5.16"
   },
   "peerDependencies": {

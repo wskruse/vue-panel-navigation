@@ -7,20 +7,33 @@
 <script>
 import scrollmonitor from 'scrollmonitor';
 export default {
+    props: {
+        sortIndex: {
+            type: Number,
+            default: 0
+        },
+        title: {
+            type: String,
+            require: true
+        }
+    },
     data() {
         return {
             section: null
         }
     },
-    created() {
-        let watcher = this.watcher = scrollmonitor.create(el);
+    mounted() {
+        console.log('panel mounted');
+        this.$set(this, 'section', this.$firstParent('.vp--section'));
+        this.$el.dataset.title = this.title;
+        this.$addPanel(this.$el, this.section);
+        let watcher = this.watcher = scrollmonitor.create(this.$el);
         watcher.fullyEnterViewport(() => {
             this.$el.classList.add('vp--active');
         });
         watcher.partiallyExitViewport(() => {
             this.$el.classList.remove('vp--active');
         });
-        this.$set(this, 'section', this.$firstParent('vp--section'));
         
     },
     destroyed() {

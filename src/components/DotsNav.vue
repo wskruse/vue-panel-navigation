@@ -3,14 +3,16 @@
         <ul class="vp--dots-section" v-for="(section, index) in sections" :key="index">
             <li
                 :class="['vp--dot', 'vp--section', {'vp--section-active': hasClass(section, 'vp--active')}]"
-                :aria-label="section.vpSection"
+                :aria-label="section.dataset.title"
+                :titl="section.dataset.title"
                 @click="scrollTo(section)"
             ></li>
             <li
-                v-for="(panel, index) in section.panels"
+                v-for="(panel, index) in panels[section.dataset.uuid]"
                 :key="index"
-                :aria-label="panel.vpPanel"
-                :class="['vp--dot', 'vp--panel', 'vp--panel-active']"
+                :aria-label="panel.dataset.title"
+                :titl="panel.dataset.title"
+                :class="['vp--dot', 'vp--panel', {'vp--panel-active': hasClass(panel, 'vp--active')}]"
                 @click="scrollTo(panel)"
             ></li>
         </ul>
@@ -19,21 +21,9 @@
 
 <script>
 import Vue from 'vue';
+import NavMixin from './mixins/NavMixin';
 export default {
-    data() {
-        return {
-            sections: Vue.vp.sections,
-            panels: Vue.vp.panels
-        }
-    },
-    methods: {
-        scrollTo(elem) {
-            window.scrollTo(elem.offsetTop);
-        },
-        hasClass(elem, classToAdd) {
-            return elem.classList.contains(classToAdd);
-        }
-    }
+    mixins: [NavMixin]
 }
 </script>
 

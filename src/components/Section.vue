@@ -5,17 +5,34 @@
 </template>
 
 <script>
+    import scrollmonitor from 'scrollmonitor';
     export default {
-        created() {
+        props: {
+            sortIndex: {
+                type: Number,
+                default: 0
+            },
+            title: {
+                type: String,
+                require: true
+            }
+        },
+        mounted() {
+            console.log('section mounted');
             this.$el.dataset.uuid = this.$shortId();
-            let watcher = scrollmonitor.create(el);
-            watcher.enterViewport(() => {
-                el.classList.add("vp--active");
+            this.$el.dataset.title = this.title;
+            this.$addSection(this.$el);
+            let watcher = this.watcher = scrollmonitor.create(this.$el);
+            watcher.fullyEnterViewport(() => {
+                this.$el.classList.add("vp--active");
             });
-            watcher.exitViewport(() => {
-                el.classList.remove("vp--active");
+            watcher.partiallyExitViewport(() => {
+                this.$el.classList.remove("vp--active");
             });
-        }
+        },
+    destroyed() {
+        this.watcher.destroy();
+    }
     };
 </script>
 
