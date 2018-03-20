@@ -1,22 +1,26 @@
 <template>
-    <div class="vp--dots-list">
-        <ul class="vp--dots-section" v-for="(section, index) in sections" :key="index">
-            <li
-                :class="['vp--dot', 'vp--section', {'vp--section-active': hasClass(section, 'vp--active')}]"
-                :aria-label="section.dataset.title"
-                :titl="section.dataset.title"
-                @click="scrollTo(section)"
-            ></li>
-            <li
-                v-for="(panel, index) in panels[section.dataset.uuid]"
-                :key="index"
-                :aria-label="panel.dataset.title"
-                :titl="panel.dataset.title"
-                :class="['vp--dot', 'vp--panel', {'vp--panel-active': hasClass(panel, 'vp--active')}]"
-                @click="scrollTo(panel)"
-            ></li>
-        </ul>
-    </div>
+    <ul :class="classes.sectionUl">
+        <li
+            v-for="(section, index) in sections" :key="index"
+            :class="['vp--text', 'vp--section', {'vp--section-active': hasClass(section, 'vp--active')}]"
+            :aria-label="section.dataset.title"
+            :title="section.dataset.title"
+            
+        >
+            <a></a>
+            <ul :class="classes.panelUl">
+                <li
+                    v-for="(panel, index) in panels[section.dataset.uuid]"
+                    :key="index"
+                    :aria-label="panel.dataset.title"
+                    :title="panel.dataset.title"
+                    :class="classes.panelLi"
+                >
+                    <a @click="scrollTo(panel)"></a>
+                </li>
+            </ul>
+        </li>
+    </ul>
 </template>
 
 <script>
