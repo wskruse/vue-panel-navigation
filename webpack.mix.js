@@ -11,9 +11,10 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.js('src/index.js', 'dist/')
-    .js('demo/app.js', 'dist/demo')
-    .copy('demo/index.html', 'dist/demo/')
+mix
+    .copy('demo/index.html', 'dist/demo/index.html')
+    .js('src/index.js', 'dist/index.js')
+    .js('demo/app.js', 'dist/demo/app.js')
     .setPublicPath('dist/')
     .sourceMaps();
 
