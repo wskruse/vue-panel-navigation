@@ -25,7 +25,7 @@
         mounted() {
             this.$el.dataset.uuid = this.$shortId();
             this.$el.dataset.title = this.title;
-            this.$addSection(this.$el);
+            this.$addSection(this.title, this.$el);
             let watcher = this.watcher = scrollmonitor.create(this.$el);
             watcher.fullyEnterViewport(() => {
                 this.$el.classList.add("vp--active");

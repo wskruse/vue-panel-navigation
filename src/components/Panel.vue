@@ -28,9 +28,10 @@
             }
         },
         mounted() {
+            this.$el.dataset.uuid = this.$shortId();
             this.$set(this, 'section', this.$firstParent('.vp--section'));
             this.$el.dataset.title = this.title;
-            this.$addPanel(this.$el, this.section);
+            this.$addPanel(this.title, this.sortIndex, this.$el, this.section);
             let watcher = this.watcher = scrollmonitor.create(this.$el);
             watcher.fullyEnterViewport(() => {
                 this.$el.classList.add('vp--active');
