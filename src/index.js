@@ -46,11 +46,11 @@ export default function install(Vue, options) {
         }
 
         return null;
-    }
+    };
 
     Vue.prototype.$shortId = () => {
         return shortid.generate();
-    }
+    };
 
     // decide if the addPanel method should be prototypical, or global, the method should take the panel and an optional section
     // if the section does not exist, or is not passed, add to a default bucket, otherwise nest under the section
@@ -66,11 +66,13 @@ export default function install(Vue, options) {
             section: section,
             uuid: panel.dataset.uuid
         });
-    }
+    };
+
     Vue.prototype.$addSection = (title, section) => {
         Vue.vp.sections.push({
             title: title,
-            element: section
+            element: section,
+            uuid: section.dataset.uuid
         });
         Vue.set(Vue.vp.panels, section.dataset.uuid, []);
         for (let i = 0; i < Vue.vp.panels['default'].length; i++) {
@@ -82,7 +84,30 @@ export default function install(Vue, options) {
                 i--;
             }
         }
-    }
+    };
+
+    Vue.prototype.$updatePanelTitle = (newTitle, uuid, sectionUuid) => {
+        let key = sectionUuid || 'default';
+        let panels = Vue.vp.panels[key];
+        for (let i = 0; i < panels.length; i++) {
+            const element = panels[i];
+            if (element.uuid = uuid) {
+                element.title = newTitle;
+                break;
+            }
+        }
+    };
+
+    Vue.prototype.$updateSectionTitle = (newTitle, uuid) => {
+        let sections = Vue.vp.sections;
+        for (let i = 0; i < sections.length; i++) {
+            const section = sections[i];
+            if (section.uuid === uuid) {
+                section.title = newTitle;
+                break;
+            }
+        }
+    };
 
     Vue.prototype.$scrollTo = function (elem) {
         smoothscroll(elem);
@@ -90,11 +115,11 @@ export default function install(Vue, options) {
 
     Vue.prototype.$getPanels = () => {
         return Vue.vp.panels;
-    }
+    };
 
     Vue.prototype.$getSections = () => {
         return Vue.vp.sections;
-    }
+    };
 
     Vue.component('VpDotsNav', DotsNav);
     Vue.component('VpTextNav', TextNav);

@@ -24,7 +24,8 @@
         },
         watch: {
             title(newTitle, oldTitle) {
-                this.$el.dataset.title = newTitle;
+                sectionUuid = (this.section) ? this.section.dataset.uuid : null;
+                this.$updatePanelTitle(newTitle, this.$el.dataset.uuid, sectionUuid);
             }
         },
         mounted() {

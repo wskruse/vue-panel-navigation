@@ -19,7 +19,7 @@
         },
         watch: {
             title(newTitle, oldTitle) {
-                this.$el.dataset.title = newTitle;
+                this.$updateSectionTitle(newTitle, this.$el.dataset.uuid);
             }
         },
         mounted() {
