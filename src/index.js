@@ -91,7 +91,7 @@ export default function install(Vue, options) {
         let panels = Vue.vp.panels[key];
         for (let i = 0; i < panels.length; i++) {
             const element = panels[i];
-            if (element.uuid = uuid) {
+            if (element.uuid === uuid) {
                 element.title = newTitle;
                 break;
             }
