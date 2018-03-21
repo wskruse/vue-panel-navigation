@@ -2,21 +2,21 @@
     <ul :class="classes.sectionUl">
         <li
             v-for="(section, index) in sections" :key="index"
-            :class="['vp--text', 'vp--section', {'vp--section-active': hasClass(section, 'vp--active')}]"
-            :aria-label="section.dataset.title"
-            :title="section.dataset.title"
+            :class="classes.sectionLi"
+            :aria-label="section.title"
+            :title="section.title"
             
         >
-            <a @click="sectionClicked(section)"></a>
+            <a @click="sectionClicked(section.element, $event)"></a>
             <ul :class="classes.panelUl">
                 <li
-                    v-for="(panel, index) in panels[section.dataset.uuid]"
+                    v-for="(panel, index) in panels[section.element.dataset.uuid]"
                     :key="index"
-                    :aria-label="panel.dataset.title"
-                    :title="panel.dataset.title"
+                    :aria-label="panel.title"
+                    :title="panel.title"
                     :class="classes.panelLi"
                 >
-                    <a @click="panelClicked(panel)"></a>
+                    <a @click="panelClicked(panel.element, $event)"></a>
                 </li>
             </ul>
         </li>

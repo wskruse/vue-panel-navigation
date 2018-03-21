@@ -10,7 +10,7 @@
             <a @click="sectionClicked(section.element, $event)">{{ section.title }}</a>
             <ul :class="classes.panelUl">
                 <li
-                    v-for="(panel, index) in panels[section.dataset.uuid]"
+                    v-for="(panel, index) in panels[section.element.dataset.uuid]"
                     :key="index"
                     :aria-label="panel.title"
                     :title="panel.title"
