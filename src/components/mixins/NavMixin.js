@@ -15,8 +15,8 @@ export default {
     },
     data() {
         return {
-            sections: Vue.vp.sections,
-            panels: Vue.vp.panels
+            sections: [],
+            panels: {}
         }
     },
     methods: {
@@ -26,5 +26,9 @@ export default {
         hasClass(elem, classToAdd) {
             return elem.classList.contains(classToAdd);
         }
+    },
+    created() {
+        this.sections = Vue.vp.sections;
+        this.panels = Vue.vp.panels;
     }
 }
