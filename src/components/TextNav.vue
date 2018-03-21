@@ -36,7 +36,7 @@ export default {
             type: String,
             default: 'fa fa-angle-down'
         }
-    }
+    },
     mixins: [NavMixin]
 }
 </script>
