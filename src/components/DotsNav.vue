@@ -7,7 +7,7 @@
             :title="section.dataset.title"
             
         >
-            <a></a>
+            <a @click="sectionClicked(section)"></a>
             <ul :class="classes.panelUl">
                 <li
                     v-for="(panel, index) in panels[section.dataset.uuid]"
@@ -16,7 +16,7 @@
                     :title="panel.dataset.title"
                     :class="classes.panelLi"
                 >
-                    <a @click="scrollTo(panel)"></a>
+                    <a @click="panelClicked(panel)"></a>
                 </li>
             </ul>
         </li>

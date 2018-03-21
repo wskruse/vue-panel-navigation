@@ -25,6 +25,22 @@ export default {
         },
         hasClass(elem, classToAdd) {
             return elem.classList.contains(classToAdd);
+        },
+        sectionClicked(section) {
+            if (! this.$listeners.sectionClicked) {
+                // handle the click ourselves
+                this.scrollTo($event.currentTarget);
+            } else {
+                this.$emit('sectionClicked', section, $event);
+            }
+        },
+        panelClicked(panel) {
+            if (! this.$listeners.panelClicked) {
+                // handle the click ourselves
+                this.scrollTo($event.currentTarget);
+            } else {
+                this.$emit('panelClicked', panel, $event);
+            }
         }
     },
     created() {

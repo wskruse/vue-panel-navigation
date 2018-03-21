@@ -7,7 +7,7 @@
             :title="section.dataset.title"
             
         >
-            <a>{{ section.dataset.title }}</a>
+            <a @click="sectionClicked(section, $event)">{{ section.dataset.title }}</a>
             <ul :class="classes.panelUl">
                 <li
                     v-for="(panel, index) in panels[section.dataset.uuid]"
@@ -16,7 +16,7 @@
                     :title="panel.dataset.title"
                     :class="classes.panelLi"
                 >
-                    <a @click="scrollTo(panel)">{{ panel.dataset.title }}</a>
+                    <a @click="panelClicked(panel, $event)">{{ panel.dataset.title }}</a>
                 </li>
             </ul>
         </li>
