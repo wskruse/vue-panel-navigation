@@ -2,7 +2,7 @@
     <ul :class="classes.sectionUl">
         <li
             v-for="(section, index) in sections" :key="index"
-            :class="classes.sectionLi"
+            :class="[classes.sectionLi, {'active': section.active}]"
             :aria-label="section.title"
             :title="section.title"
             
@@ -14,7 +14,7 @@
                     :key="index"
                     :aria-label="panel.title"
                     :title="panel.title"
-                    :class="classes.panelLi"
+                    :class="[classes.panelLi, {'active': panel.active}]"
                 >
                     <a @click="panelClicked(panel.element, $event)"></a>
                 </li>

@@ -35,9 +35,11 @@
             this.$addPanel(this.title, this.sortIndex, this.$el, this.section);
             let watcher = this.watcher = scrollmonitor.create(this.$el);
             watcher.fullyEnterViewport(() => {
+                let sectionUuid = (this.section) ? this.section.dataset.uuid : null;
                 this.$el.classList.add('vp--active');
+                this.$setActivePanel(this.$el.dataset.uuid, sectionUuid);
             });
-            watcher.partiallyExitViewport(() => {
+            watcher.fullyExitViewport(() => {
                 this.$el.classList.remove('vp--active');
             });
         },

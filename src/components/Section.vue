@@ -29,8 +29,9 @@
             let watcher = this.watcher = scrollmonitor.create(this.$el);
             watcher.fullyEnterViewport(() => {
                 this.$el.classList.add("vp--active");
+                this.$setActiveSection(this.$el.dataset.uuid);
             });
-            watcher.partiallyExitViewport(() => {
+            watcher.fullyExitViewport(() => {
                 this.$el.classList.remove("vp--active");
             });
         },

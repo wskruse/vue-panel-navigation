@@ -64,7 +64,8 @@ export default function install(Vue, options) {
             sortIndex: sortIndex,
             element: panel,
             section: section,
-            uuid: panel.dataset.uuid
+            uuid: panel.dataset.uuid,
+            active: false
         });
     };
 
@@ -108,6 +109,19 @@ export default function install(Vue, options) {
             }
         }
     };
+
+    Vue.prototype.$setActiveSection = (uuid) => {
+        Vue.vp.sections.forEach((item) => {
+            item.active = (item.uuid === uuid);
+        });
+    };
+
+    Vue.prototype.$setActivePanel = (uuid, sectionUuid) => {
+        let key = sectionUuid || 'default';
+        Vue.vp.panels[key].forEach((item) => {
+            item.active = (item.uuid === uuid);
+        });
+    }
 
     Vue.prototype.$scrollTo = function (elem) {
         smoothscroll(elem);
