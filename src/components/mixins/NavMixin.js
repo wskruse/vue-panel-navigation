@@ -27,19 +27,19 @@ export default {
             return elem.classList.contains(classToAdd);
         },
         sectionClicked(section, $event) {
-            if (! this.$listeners.sectionClicked) {
+            if (! this.$listeners.sectionclicked) {
                 // handle the click ourselves
                 this.scrollTo(section);
             } else {
-                this.$emit('sectionClicked', section, $event);
+                this.$emit('sectionclicked', section, $event);
             }
         },
         panelClicked(panel, $event) {
-            if (! this.$listeners.panelClicked) {
+            if (! this.$listeners.panelclicked) {
                 // handle the click ourselves
                 this.scrollTo(panel);
             } else {
-                this.$emit('panelClicked', panel, $event);
+                this.$emit('panelclicked', panel, $event);
             }
         }
     },
