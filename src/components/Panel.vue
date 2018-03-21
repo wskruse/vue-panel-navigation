@@ -39,7 +39,7 @@
                 this.$el.classList.add('vp--active');
                 this.$setActivePanel(this.$el.dataset.uuid, sectionUuid);
             });
-            watcher.fullyExitViewport(() => {
+            watcher.exitViewport(() => {
                 this.$el.classList.remove('vp--active');
             });
         },
