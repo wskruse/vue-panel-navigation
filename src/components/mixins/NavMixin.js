@@ -26,18 +26,18 @@ export default {
         hasClass(elem, classToAdd) {
             return elem.classList.contains(classToAdd);
         },
-        sectionClicked(section) {
+        sectionClicked(section, $event) {
             if (! this.$listeners.sectionClicked) {
                 // handle the click ourselves
-                this.scrollTo($event.currentTarget);
+                this.scrollTo(section);
             } else {
                 this.$emit('sectionClicked', section, $event);
             }
         },
-        panelClicked(panel) {
+        panelClicked(panel, $event) {
             if (! this.$listeners.panelClicked) {
                 // handle the click ourselves
-                this.scrollTo($event.currentTarget);
+                this.scrollTo(panel);
             } else {
                 this.$emit('panelClicked', panel, $event);
             }
