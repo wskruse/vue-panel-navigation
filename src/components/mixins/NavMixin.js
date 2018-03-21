@@ -28,7 +28,7 @@ export default {
         }
     },
     created() {
-        this.sections = Vue.vp.sections;
-        this.panels = Vue.vp.panels;
+        this.sections = this.$getSections();
+        this.panels = this.$getPanels();
     }
 }

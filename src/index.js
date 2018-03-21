@@ -78,6 +78,14 @@ export default function install(Vue, options) {
         smoothscroll(elem);
     };
 
+    Vue.prototype.$getPanels = () => {
+        return Vue.vp.panels;
+    }
+
+    Vue.prototype.$getSections = () => {
+        return Vue.vp.sections;
+    }
+
     Vue.component('VpDotsNav', DotsNav);
     Vue.component('VpTextNav', TextNav);
     Vue.component('VpPanel', Panel);
