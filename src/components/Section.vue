@@ -18,7 +18,6 @@
             }
         },
         mounted() {
-            console.log('section mounted');
             this.$el.dataset.uuid = this.$shortId();
             this.$el.dataset.title = this.title;
             this.$addSection(this.$el);

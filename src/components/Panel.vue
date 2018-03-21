@@ -23,7 +23,6 @@ export default {
         }
     },
     mounted() {
-        console.log('panel mounted');
         this.$set(this, 'section', this.$firstParent('.vp--section'));
         this.$el.dataset.title = this.title;
         this.$addPanel(this.$el, this.section);

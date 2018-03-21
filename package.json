@@ -27,6 +27,7 @@
   "devDependencies": {
     "cross-env": "^5.1.4",
     "eslint": "^4.18.2",
+    "husky": "^0.15.0-rc.12",
     "laravel-mix": "^2.1.9",
     "rollup": "^0.57.1"
   },
@@ -36,5 +37,10 @@
     "shortid": "^2.2.8",
     "smoothscroll": "^0.4.0",
     "vue": "^2.5.16"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run prod"
+    }
   }
 }
