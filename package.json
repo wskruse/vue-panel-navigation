@@ -40,7 +40,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run prod"
+      "pre-commit": "npm run prod && git add dist/"
     }
   }
 }
