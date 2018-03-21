@@ -17,6 +17,11 @@
                 require: true
             }
         },
+        watch: {
+            title(newTitle, oldTitle) {
+                this.$el.dataset.title = newTitle;
+            }
+        },
         mounted() {
             this.$el.dataset.uuid = this.$shortId();
             this.$el.dataset.title = this.title;
@@ -29,9 +34,9 @@
                 this.$el.classList.remove("vp--active");
             });
         },
-    destroyed() {
-        this.watcher.destroy();
-    }
+        destroyed() {
+            this.watcher.destroy();
+        }
     };
 </script>
 
