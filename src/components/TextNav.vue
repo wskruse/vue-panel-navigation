@@ -7,7 +7,7 @@
             :title="section.title"
             
         >
-            <a @click="sectionClicked(section.element, $event)">{{ section.title }}</a>
+            <a @click="sectionClicked(section.element, $event)">{{ section.title }} <i v-if="showExpander" :class="expanderClass"></i></a>
             <ul :class="classes.panelUl">
                 <li
                     v-for="(panel, index) in panels[section.element.dataset.uuid]"
@@ -27,6 +27,16 @@
 import Vue from 'vue';
 import NavMixin from './mixins/NavMixin';
 export default {
+    props: {
+        showExpander: {
+            type: Boolean,
+            default: false
+        },
+        expanderClass: {
+            type: String,
+            default: 'fa fa-angle-down'
+        }
+    }
     mixins: [NavMixin]
 }
 </script>
