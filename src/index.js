@@ -3,6 +3,7 @@ import DotsNav from './components/DotsNav';
 import TextNav from './components/TextNav';
 import Section from './components/Section';
 import Panel from './components/Panel';
+import NextButton from './components/NextButton';
 import scrollmonitor from 'scrollmonitor';
 import shortid from 'shortid';
 import get from 'lodash.get';
@@ -73,7 +74,8 @@ export default function install(Vue, options) {
         Vue.vp.sections.push({
             title: title,
             element: section,
-            uuid: section.dataset.uuid
+            uuid: section.dataset.uuid,
+            active: false
         });
         Vue.set(Vue.vp.panels, section.dataset.uuid, []);
         for (let i = 0; i < Vue.vp.panels['default'].length; i++) {
@@ -123,9 +125,25 @@ export default function install(Vue, options) {
         });
     }
 
-    Vue.prototype.$scrollTo = function (elem) {
+    Vue.scrollTo = Vue.prototype.$scrollTo = function (elem) {
         smoothscroll(elem);
     };
+
+    Vue.prototype.$scrollToNextPanel = () => {
+        // get the active section
+        let section = Vue.vp.sections.find(function (section) {
+            return section.active;
+        });
+        if (section) {
+            // now find the index of the active panel
+            let panelIndex = Vue.vp.panels[section.uuid].findIndex(function (panel) {
+                return panel.active;
+            });
+            if (panelIndex >= 0 && panelIndex < Vue.vp.panels[section.uuid].length - 1) {
+                Vue.scrollTo(Vue.vp.panels[section.uuid][panelIndex + 1].element);
+            }
+        }
+    }
 
     Vue.prototype.$getPanels = () => {
         return Vue.vp.panels;
@@ -139,4 +157,5 @@ export default function install(Vue, options) {
     Vue.component('VpTextNav', TextNav);
     Vue.component('VpPanel', Panel);
     Vue.component('VpSection', Section);
+    Vue.component('VpNext', NextButton);
 }
