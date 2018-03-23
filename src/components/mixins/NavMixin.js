@@ -31,7 +31,9 @@ export default {
                 // handle the click ourselves
                 this.scrollTo(section);
             } else {
-                this.$emit('sectionclicked', section, $event);
+                this.$emit('sectionclicked', section, $event, () => {
+                    this.scrollTo(section);
+                });
             }
         },
         panelClicked(panel, $event) {
@@ -39,7 +41,9 @@ export default {
                 // handle the click ourselves
                 this.scrollTo(panel);
             } else {
-                this.$emit('panelclicked', panel, $event);
+                this.$emit('panelclicked', panel, $event, () => {
+                    this.scrollTo(panel);
+                });
             }
         }
     },
