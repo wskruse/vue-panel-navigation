@@ -6,7 +6,9 @@
 
 <script>
     import scrollmonitor from 'scrollmonitor';
+    import OffsetMixin from './mixins/OffsetMixin';
     export default {
+        mixins: [OffsetMixin],
         props: {
             sortIndex: {
                 type: Number,
@@ -33,7 +35,7 @@
             this.$set(this, 'section', this.$firstParent('.vp--section'));
             this.$el.dataset.title = this.title;
             this.$addPanel(this.title, this.sortIndex, this.$el, this.section);
-            let watcher = this.watcher = scrollmonitor.create(this.$el);
+            let watcher = this.watcher = scrollmonitor.create(this.$el, {top: this.offsetTop, bottom: this.offsetBottom});
             watcher.fullyEnterViewport(() => {
                 let sectionUuid = (this.section) ? this.section.dataset.uuid : null;
                 this.$el.classList.add('vp--active');
