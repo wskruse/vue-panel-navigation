@@ -36,7 +36,7 @@
             this.$el.dataset.title = this.title;
             this.$addPanel(this.title, this.sortIndex, this.$el, this.section);
             let watcher = this.watcher = scrollmonitor.create(this.$el, {top: this.offsetTop, bottom: this.offsetBottom});
-            watcher.fullyEnterViewport(() => {
+            watcher.enterViewport(() => {
                 let sectionUuid = (this.section) ? this.section.dataset.uuid : null;
                 this.$el.classList.add('vp--active');
                 this.$setActivePanel(this.$el.dataset.uuid, sectionUuid);
