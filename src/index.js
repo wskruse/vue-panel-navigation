@@ -8,6 +8,8 @@ import scrollmonitor from 'scrollmonitor';
 import shortid from 'shortid';
 import get from 'lodash.get';
 import smoothscroll from 'smoothscroll';
+import Tooltip from 'vue-directive-tooltip';
+import 'vue-directive-tooltip/css/index.css';
 
 export default function install(Vue, options) {
     let plugin = install;
@@ -71,12 +73,13 @@ export default function install(Vue, options) {
     };
 
     Vue.prototype.$addSection = (title, section) => {
-        Vue.vp.sections.push({
+        let sectionData = {
             title: title,
             element: section,
             uuid: section.dataset.uuid,
             active: false
-        });
+        };
+        Vue.vp.sections.push(sectionData);
         Vue.set(Vue.vp.panels, section.dataset.uuid, []);
         for (let i = 0; i < Vue.vp.panels['default'].length; i++) {
             let panel = Vue.vp.panels.default[i];
@@ -87,6 +90,7 @@ export default function install(Vue, options) {
                 i--;
             }
         }
+        return sectionData;
     };
 
     Vue.prototype.$updatePanelTitle = (newTitle, uuid, sectionUuid) => {
@@ -158,4 +162,5 @@ export default function install(Vue, options) {
     Vue.component('VpPanel', Panel);
     Vue.component('VpSection', Section);
     Vue.component('VpNext', NextButton);
+    Vue.use(Tooltip);
 }

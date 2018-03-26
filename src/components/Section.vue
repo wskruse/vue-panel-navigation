@@ -1,5 +1,5 @@
 <template>
-    <div class="vp--section">
+    <div :class="['vp--section', {'vp--active': section.active}]">
         <slot></slot>
     </div>
 </template>
@@ -19,6 +19,13 @@
                 require: true
             }
         },
+        data() {
+            return {
+                section: {
+                    active: false
+                },
+            }
+        },
         watch: {
             title(newTitle, oldTitle) {
                 this.$updateSectionTitle(newTitle, this.$el.dataset.uuid);
@@ -27,7 +34,7 @@
         mounted() {
             this.$el.dataset.uuid = this.$shortId();
             this.$el.dataset.title = this.title;
-            this.$addSection(this.title, this.$el);
+            this.section = this.$addSection(this.title, this.$el);
             let watcher = this.watcher = scrollmonitor.create(this.$el, {top: this.offsetTop, bottom: this.offsetBottom});
             watcher.enterViewport(() => {
                 this.$el.classList.add("vp--active");

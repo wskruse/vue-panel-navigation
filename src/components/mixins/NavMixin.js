@@ -5,10 +5,14 @@ export default {
             type: Object,
             default () {
                 return {
-                    sectionUl: ['vp--text-sections'],
-                    sectionLi: ['vp--text', 'vp--section'],
-                    panelUl: ['vp--text-panels'],
-                    panelLi: ['vp--text', 'vp--panel']
+                    textSectionUl: ['vp--text-sections'],
+                    textSectionLi: ['vp--text', 'vp--section'],
+                    textPanelUl: ['vp--text-panels'],
+                    textPanelLi: ['vp--text', 'vp--panel'],
+                    dotSectionUl: ['vp--dot-sections'],
+                    dotSectionLi: ['vp--dot', 'vp--section'],
+                    dotPanelUl: ['vp--dot-panels'],
+                    dotPanelLi: ['vp--dot', 'vp--panel']
                 }
             }
         }
