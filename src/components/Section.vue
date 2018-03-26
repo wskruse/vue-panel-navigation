@@ -32,16 +32,16 @@
             }
         },
         mounted() {
+            let viewportHeight = scrollmonitor.viewportHeight;
             this.$el.dataset.uuid = this.$shortId();
             this.$el.dataset.title = this.title;
             this.section = this.$addSection(this.title, this.$el);
-            let watcher = this.watcher = scrollmonitor.create(this.$el, {top: this.offsetTop, bottom: this.offsetBottom});
+            let watcher = this.watcher = scrollmonitor.create(this.$el, {top: this.offsetTop + (viewportHeight / 2), bottom: this.offsetBottom});
             watcher.enterViewport(() => {
-                this.$el.classList.add("vp--active");
                 this.$setActiveSection(this.$el.dataset.uuid);
             });
             watcher.exitViewport(() => {
-                this.$el.classList.remove("vp--active");
+                
             });
         },
         destroyed() {
