@@ -7,7 +7,7 @@
             :title="section.title"
             
         >
-            <a @click="sectionClicked(section.element, $event)" v-tooltip="section.title"></a>
+            <a @click="sectionClicked(section.element, $event)" v-tooltip.right="section.title"></a>
             <ul :class="classes.dotPanelUl">
                 <li
                     v-for="(panel, index) in panels[section.element.dataset.uuid]"
@@ -16,7 +16,7 @@
                     :title="panel.title"
                     :class="[classes.dotPanelLi, {'active': panel.active}]"
                 >
-                    <a @click="panelClicked(panel.element, $event)" v-tooltip="panel.title"></a>
+                    <a @click="panelClicked(panel.element, $event)" v-tooltip.right="panel.title"></a>
                 </li>
             </ul>
         </li>
