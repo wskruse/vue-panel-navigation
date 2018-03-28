@@ -31,18 +31,23 @@
             }
         },
         mounted() {
+            let baseOffset = scrollmonitor.viewportHeight / 4;
             this.$el.dataset.uuid = this.$shortId();
             this.$set(this, 'section', this.$firstParent('.vp--section'));
             this.$el.dataset.title = this.title;
             this.$addPanel(this.title, this.sortIndex, this.$el, this.section);
-            let watcher = this.watcher = scrollmonitor.create(this.$el, {top: this.offsetTop, bottom: this.offsetBottom});
-            watcher.enterViewport(() => {
+            
+            let watcher = this.watcher = scrollmonitor.create(
+                this.$el,
+                {
+                    top: this.offsetTop - baseOffset,
+                    bottom: this.offsetBottom - baseOffset
+                }
+            );
+            watcher.fullyEnterViewport(() => {
                 let sectionUuid = (this.section) ? this.section.dataset.uuid : null;
                 this.$el.classList.add('vp--active');
                 this.$setActivePanel(this.$el.dataset.uuid, sectionUuid);
-            });
-            watcher.exitViewport(() => {
-                this.$el.classList.remove('vp--active');
             });
         },
         destroyed() {
