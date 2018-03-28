@@ -44,7 +44,7 @@
                     bottom: this.offsetBottom - baseOffset
                 }
             );
-            watcher.fullyEnterViewport(() => {
+            watcher.enterViewport(() => {
                 let sectionUuid = (this.section) ? this.section.dataset.uuid : null;
                 this.$el.classList.add('vp--active');
                 this.$setActivePanel(this.$el.dataset.uuid, sectionUuid);
