@@ -57,7 +57,7 @@ export default function install(Vue, options) {
 
     // decide if the addPanel method should be prototypical, or global, the method should take the panel and an optional section
     // if the section does not exist, or is not passed, add to a default bucket, otherwise nest under the section
-    Vue.prototype.$addPanel = (title, sortIndex, panel, section) => {
+    Vue.prototype.$addPanel = (title, sortIndex, panel, section, excludeFromNav) => {
         let key = get(section, 'dataset.uuid', 'default');
         if (! Vue.vp.panels[key]) {
             Vue.set(Vue.vp.panels, key, []);
@@ -68,7 +68,8 @@ export default function install(Vue, options) {
             element: panel,
             section: section,
             uuid: panel.dataset.uuid,
-            active: false
+            active: false,
+            excludeFromNav: excludeFromNav
         });
     };
 

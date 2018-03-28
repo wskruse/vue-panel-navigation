@@ -12,6 +12,7 @@
                 <li
                     v-for="(panel, index) in panels[section.element.dataset.uuid]"
                     :key="index"
+                    v-if="! panel.excludeFromNav"
                     :aria-label="panel.title"
                     :title="panel.title"
                     :class="[classes.textPanelLi, {'active': panel.active}]"
