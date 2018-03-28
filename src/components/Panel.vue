@@ -31,7 +31,7 @@
             }
         },
         mounted() {
-            let baseOffset = scrollmonitor.viewportHeight / 4;
+            let baseOffset = scrollmonitor.viewportHeight / 3;
             this.$el.dataset.uuid = this.$shortId();
             this.$set(this, 'section', this.$firstParent('.vp--section'));
             this.$el.dataset.title = this.title;
