@@ -25,18 +25,30 @@
         },
         data() {
             return {
-                section: null
+                section: null,
+                uuid: null,
+                sectionUuid: null
             }
         },
         watch: {
             title(newTitle, oldTitle) {
-                let sectionUuid = (this.section) ? this.section.dataset.uuid : null;
-                this.$updatePanelTitle(newTitle, this.$el.dataset.uuid, sectionUuid);
+                this.$updatePanelTitle(newTitle, this.$el.dataset.uuid, this.getSectionUuid());
+            },
+            exclude(oldValue, newValue) {
+                this.$setExcludeFromNav(this.uuid, this.getSectionUuid(), newValue);
+            } 
+        },
+        methods: {
+            getSectionUuid() {
+                if (!this.sectionUuid && this.section) {
+                    this.sectionUuid = this.section.dataset.uuid;
+                }
+                return this.sectionUuid;
             }
         },
         mounted() {
             let baseOffset = scrollmonitor.viewportHeight / 3;
-            this.$el.dataset.uuid = this.$shortId();
+            this.$el.dataset.uuid = this.uuid = this.$shortId();
             this.$set(this, 'section', this.$firstParent('.vp--section'));
             this.$el.dataset.title = this.title;
             this.$addPanel(this.title, this.sortIndex, this.$el, this.section, this.exclude);
@@ -49,9 +61,8 @@
                 }
             );
             watcher.enterViewport(() => {
-                let sectionUuid = (this.section) ? this.section.dataset.uuid : null;
                 this.$el.classList.add('vp--active');
-                this.$setActivePanel(this.$el.dataset.uuid, sectionUuid);
+                this.$setActivePanel(this.uuid, this.getSectionUuid());
             });
         },
         destroyed() {

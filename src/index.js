@@ -130,6 +130,16 @@ export default function install(Vue, options) {
         });
     }
 
+    Vue.prototype.$setExcludeFromNav = (uuid, sectionUuid, value) => {
+        let key = sectionUuid || 'default';
+        for (let i = 0; i < Vue.vp.panels[key].length; i++) {
+            if (item.uuid === uuid) {
+                item.excludeFromNav = value;
+                break;
+            }
+        }
+    }
+
     Vue.scrollTo = Vue.prototype.$scrollTo = function (elem) {
         smoothscroll(elem);
     };
