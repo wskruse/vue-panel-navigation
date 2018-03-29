@@ -133,6 +133,7 @@ export default function install(Vue, options) {
     Vue.prototype.$setExcludeFromNav = (uuid, sectionUuid, value) => {
         let key = sectionUuid || 'default';
         for (let i = 0; i < Vue.vp.panels[key].length; i++) {
+            let item = Vue.vp.panels[key][i];
             if (item.uuid === uuid) {
                 item.excludeFromNav = value;
                 break;
