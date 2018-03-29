@@ -34,8 +34,8 @@
             title(newTitle, oldTitle) {
                 this.$updatePanelTitle(newTitle, this.$el.dataset.uuid, this.getSectionUuid());
             },
-            exclude(oldValue, newValue) {
-                this.$setExcludeFromNav(this.uuid, this.getSectionUuid(), newValue);
+            exclude(value) {
+                this.$setExcludeFromNav(this.uuid, this.getSectionUuid(), value);
             } 
         },
         methods: {
