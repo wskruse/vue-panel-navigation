@@ -65,7 +65,7 @@
                 this.$setActivePanel(this.uuid, this.getSectionUuid());
                 this.$setActiveSection(this.getSectionUuid());
             });
-            scrollmonitor.recalculateLocations();
+            scrollmonitor.update();
         },
         destroyed() {
             this.watcher.destroy();
