@@ -39,8 +39,8 @@
             let watcher = this.watcher = scrollmonitor.create(
                 this.$el,
                 {
-                    top: this.offsetTop - baseOffset,
-                    bottom: this.offsetBottom - baseOffset
+                    top: this.offsetTop,
+                    bottom: this.offsetBottom
                 }
             );
             watcher.fullyEnterViewport(() => {
