@@ -63,6 +63,7 @@
             watcher.enterViewport(() => {
                 this.$el.classList.add('vp--active');
                 this.$setActivePanel(this.uuid, this.getSectionUuid());
+                this.$setActiveSection(this.getSectionUuid());
             });
             scrollmonitor.recalculateLocations();
         },
