@@ -46,6 +46,7 @@
             watcher.fullyEnterViewport(() => {
                 this.$setActiveSection(this.$el.dataset.uuid);
             });
+            scrollmonitor.recalculateLocations();
         },
         destroyed() {
             this.watcher.destroy();

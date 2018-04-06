@@ -64,6 +64,7 @@
                 this.$el.classList.add('vp--active');
                 this.$setActivePanel(this.uuid, this.getSectionUuid());
             });
+            scrollmonitor.recalculateLocations();
         },
         destroyed() {
             this.watcher.destroy();
