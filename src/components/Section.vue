@@ -32,7 +32,7 @@
             }
         },
         mounted() {
-            let baseOffset = scrollmonitor.viewportHeight / 4;
+            let baseOffset = scrollmonitor.viewportHeight / 3;
             this.$el.dataset.uuid = this.$shortId();
             this.$el.dataset.title = this.title;
             this.section = this.$addSection(this.title, this.$el);
@@ -43,11 +43,8 @@
                     bottom: this.offsetBottom - baseOffset
                 }
             );
-            watcher.enterViewport(() => {
+            watcher.fullyEnterViewport(() => {
                 this.$setActiveSection(this.$el.dataset.uuid);
-            });
-            watcher.exitViewport(() => {
-                
             });
         },
         destroyed() {

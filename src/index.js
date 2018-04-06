@@ -59,7 +59,7 @@ export default function install(Vue, options) {
     // if the section does not exist, or is not passed, add to a default bucket, otherwise nest under the section
     Vue.prototype.$addPanel = (title, sortIndex, panel, section, excludeFromNav) => {
         let key = get(section, 'dataset.uuid', 'default');
-        if (! Vue.vp.panels[key]) {
+        if (!Vue.vp.panels[key]) {
             Vue.set(Vue.vp.panels, key, []);
         }
         Vue.vp.panels[key].push({
@@ -158,6 +158,15 @@ export default function install(Vue, options) {
             if (panelIndex >= 0 && panelIndex < Vue.vp.panels[section.uuid].length - 1) {
                 Vue.scrollTo(Vue.vp.panels[section.uuid][panelIndex + 1].element);
             }
+        }
+    }
+
+    Vue.prototype.$scrollToNexSection = () => {
+        let index = Vue.vp.sections.findIndex((section) => {
+            return section.active;
+        });
+        if (index >= 0 && index + 1 < Vue.vp.sections.length) {
+            Vue.scrollTo(Vue.vp.sections[index + 1].element);
         }
     }
 
