@@ -32,10 +32,10 @@
             }
         },
         mounted() {
+            this.$el.dataset.uuid = this.$shortId();
+            this.$el.dataset.title = this.title;
+            this.section = this.$addSection(this.title, this.$el);
             // let baseOffset = scrollmonitor.viewportHeight / 3;
-            // this.$el.dataset.uuid = this.$shortId();
-            // this.$el.dataset.title = this.title;
-            // this.section = this.$addSection(this.title, this.$el);
             // let watcher = this.watcher = scrollmonitor.create(
             //     this.$el,
             //     {
