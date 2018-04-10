@@ -147,9 +147,10 @@ export default function install(Vue, options) {
 
     Vue.prototype.$scrollToNextPanel = () => {
         // get the active section
-        let section = Vue.vp.sections.find(function (section) {
+        let index = Vue.vp.sections.findIndex(function (section) {
             return section.active;
         });
+        let section = Vue.vp.sections[index];
         if (section) {
             // now find the index of the active panel
             let panelIndex = Vue.vp.panels[section.uuid].findIndex(function (panel) {
@@ -157,6 +158,9 @@ export default function install(Vue, options) {
             });
             if (panelIndex >= 0 && panelIndex < Vue.vp.panels[section.uuid].length - 1) {
                 Vue.scrollTo(Vue.vp.panels[section.uuid][panelIndex + 1].element);
+            } else if (index + 1 < Vue.vp.sections.length) {
+                section = Vue.vp.sections[index + 1];
+                Vue.scrollTo(Vue.vp.panels[section.uuid][0].element);
             }
         }
     }
