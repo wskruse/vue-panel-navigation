@@ -36,15 +36,16 @@ export default {
     mounted() {
         if (this.hideOnLastPanel) {
             // find the last panel in the last section
-            const interval = setInterval(() => {
+            let vm = this;
+            const interval = setInterval(function () {
                 const lastPanel = document.querySelector('.vp--section:last-child .vp--panel:last-child');
                 if (lastPanel) {
-                    this.watcher = scrollmonitor.create(lastPanel);
-                    this.watcher.enterViewport(() => {
-                        this.$el.classList.add('hidden');
+                    vm.watcher = scrollmonitor.create(lastPanel);
+                    vm.watcher.enterViewport(() => {
+                        vm.$el.classList.add('hidden');
                     });
-                    this.watcher.exitViewport(() => {
-                        this.$el.classList.remove('hidden');
+                    vm.watcher.exitViewport(() => {
+                        vm.$el.classList.remove('hidden');
                     });
                     clearInterval(interval);
                 }

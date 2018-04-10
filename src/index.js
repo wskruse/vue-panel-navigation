@@ -51,13 +51,13 @@ export default function install(Vue, options) {
         return null;
     };
 
-    Vue.prototype.$shortId = () => {
+    Vue.prototype.$shortId = function () {
         return shortid.generate();
     };
 
     // decide if the addPanel method should be prototypical, or global, the method should take the panel and an optional section
     // if the section does not exist, or is not passed, add to a default bucket, otherwise nest under the section
-    Vue.prototype.$addPanel = (title, sortIndex, panel, section, excludeFromNav) => {
+    Vue.prototype.$addPanel = function (title, sortIndex, panel, section, excludeFromNav) {
         let key = get(section, 'dataset.uuid', 'default');
         if (!Vue.vp.panels[key]) {
             Vue.set(Vue.vp.panels, key, []);
@@ -73,7 +73,7 @@ export default function install(Vue, options) {
         });
     };
 
-    Vue.prototype.$addSection = (title, section) => {
+    Vue.prototype.$addSection = function (title, section) {
         let sectionData = {
             title: title,
             element: section,
@@ -94,7 +94,7 @@ export default function install(Vue, options) {
         return sectionData;
     };
 
-    Vue.prototype.$updatePanelTitle = (newTitle, uuid, sectionUuid) => {
+    Vue.prototype.$updatePanelTitle = function (newTitle, uuid, sectionUuid) {
         let key = sectionUuid || 'default';
         let panels = Vue.vp.panels[key];
         for (let i = 0; i < panels.length; i++) {
@@ -106,7 +106,7 @@ export default function install(Vue, options) {
         }
     };
 
-    Vue.prototype.$updateSectionTitle = (newTitle, uuid) => {
+    Vue.prototype.$updateSectionTitle = function (newTitle, uuid) {
         let sections = Vue.vp.sections;
         for (let i = 0; i < sections.length; i++) {
             const section = sections[i];
@@ -117,20 +117,20 @@ export default function install(Vue, options) {
         }
     };
 
-    Vue.prototype.$setActiveSection = (uuid) => {
+    Vue.prototype.$setActiveSection = function (uuid) {
         Vue.vp.sections.forEach((item) => {
             item.active = (item.uuid === uuid);
         });
     };
 
-    Vue.prototype.$setActivePanel = (uuid, sectionUuid) => {
+    Vue.prototype.$setActivePanel = function (uuid, sectionUuid) {
         let key = sectionUuid || 'default';
-        Vue.vp.panels[key].forEach((item) => {
+        Vue.vp.panels[key].forEach(function (item) {
             item.active = (item.uuid === uuid);
         });
     }
 
-    Vue.prototype.$setExcludeFromNav = (uuid, sectionUuid, value) => {
+    Vue.prototype.$setExcludeFromNav = function (uuid, sectionUuid, value) {
         let key = sectionUuid || 'default';
         for (let i = 0; i < Vue.vp.panels[key].length; i++) {
             let item = Vue.vp.panels[key][i];
@@ -145,7 +145,7 @@ export default function install(Vue, options) {
         smoothscroll(elem);
     };
 
-    Vue.prototype.$scrollToNextPanel = () => {
+    Vue.prototype.$scrollToNextPanel = function () {
         // get the active section
         let index = Vue.vp.sections.findIndex(function (section) {
             return section.active;
@@ -165,8 +165,8 @@ export default function install(Vue, options) {
         }
     }
 
-    Vue.prototype.$scrollToNexSection = () => {
-        let index = Vue.vp.sections.findIndex((section) => {
+    Vue.prototype.$scrollToNexSection = function () {
+        let index = Vue.vp.sections.findIndex(function (section) {
             return section.active;
         });
         if (index >= 0 && index + 1 < Vue.vp.sections.length) {
@@ -174,11 +174,11 @@ export default function install(Vue, options) {
         }
     }
 
-    Vue.prototype.$getPanels = () => {
+    Vue.prototype.$getPanels = function () {
         return Vue.vp.panels;
     };
 
-    Vue.prototype.$getSections = () => {
+    Vue.prototype.$getSections = function () {
         return Vue.vp.sections;
     };
 

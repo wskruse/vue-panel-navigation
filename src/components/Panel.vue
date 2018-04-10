@@ -48,6 +48,7 @@
         },
         mounted() {
             let baseOffset = scrollmonitor.viewportHeight / 3;
+            let vm = this;
             this.$el.dataset.uuid = this.uuid = this.$shortId();
             this.$set(this, 'section', this.$firstParent('.vp--section'));
             this.$el.dataset.title = this.title;
@@ -60,10 +61,10 @@
                     bottom: this.offsetBottom - baseOffset
                 }
             );
-            watcher.enterViewport(() => {
-                this.$el.classList.add('vp--active');
-                this.$setActivePanel(this.uuid, this.getSectionUuid());
-                this.$setActiveSection(this.getSectionUuid());
+            watcher.enterViewport(function () {
+                vm.$el.classList.add('vp--active');
+                vm.$setActivePanel(vm.uuid, vm.getSectionUuid());
+                vm.$setActiveSection(vm.getSectionUuid());
             });
             scrollmonitor.update();
         },

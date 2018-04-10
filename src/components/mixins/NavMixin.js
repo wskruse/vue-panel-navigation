@@ -31,22 +31,24 @@ export default {
             return elem.classList.contains(classToAdd);
         },
         sectionClicked(section, $event) {
-            if (! this.$listeners.sectionclicked) {
+            if (!this.$listeners.sectionclicked) {
                 // handle the click ourselves
                 this.scrollTo(section);
             } else {
-                this.$emit('sectionclicked', section, $event, () => {
+                let vm = this;
+                this.$emit('sectionclicked', section, $event, function () {
                     this.scrollTo(section);
                 });
             }
         },
         panelClicked(panel, $event) {
-            if (! this.$listeners.panelclicked) {
+            if (!this.$listeners.panelclicked) {
                 // handle the click ourselves
                 this.scrollTo(panel);
             } else {
-                this.$emit('panelclicked', panel, $event, () => {
-                    this.scrollTo(panel);
+                let vm = this;
+                this.$emit('panelclicked', panel, $event, function () {
+                    vm.scrollTo(panel);
                 });
             }
         }

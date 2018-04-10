@@ -1,7 +1,5 @@
 {
     "/demo/app.js": "/demo/app.js",
-    "/demo/app.js.map": "/demo/app.js.map",
     "/index.js": "/index.js",
-    "/index.js.map": "/index.js.map",
     "/demo/index.html": "/demo/index.html"
 }
