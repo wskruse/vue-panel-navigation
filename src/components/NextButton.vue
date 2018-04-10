@@ -33,17 +33,22 @@ export default {
             watcher: null
         }
     },
-    mounted() {
+    after() {
         if (this.hideOnLastPanel) {
             // find the last panel in the last section
-            const lastPanel = document.querySelector('.vp--section:last-child .vp--panel:last-child');
-            this.watcher = scrollmonitor.create(lastPanel);
-            this.watcher.enterViewport(() => {
-                this.$el.classList.add('hidden');
-            });
-            this.watcher.exitViewport(() => {
-                this.$el.classList.remove('hidden');
-            });
+            const interval = setInterval(() => {
+                const lastPanel = document.querySelector('.vp--section:last-child .vp--panel:last-child');
+                if (lastPanel) {
+                    this.watcher = scrollmonitor.create(lastPanel);
+                    this.watcher.enterViewport(() => {
+                        this.$el.classList.add('hidden');
+                    });
+                    this.watcher.exitViewport(() => {
+                        this.$el.classList.remove('hidden');
+                    });
+                    clearInterval(interval);
+                }
+            }, 100)
         }
     },
     methods: {
