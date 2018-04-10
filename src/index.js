@@ -118,7 +118,7 @@ export default function install(Vue, options) {
     };
 
     Vue.prototype.$setActiveSection = function (uuid) {
-        Vue.vp.sections.forEach((item) => {
+        Vue.vp.sections.forEach(function (item) {
             item.active = (item.uuid === uuid);
         });
     };
