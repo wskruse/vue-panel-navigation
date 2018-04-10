@@ -36,7 +36,7 @@ export default {
     mounted() {
         if (this.hideOnLastPanel) {
             // find the last panel in the last section
-            const lastPanel = document.querySelector('vp--section:last-child vp--panel:last-child');
+            const lastPanel = document.querySelector('.vp--section:last-child .vp--panel:last-child');
             this.watcher = scrollmonitor.create(lastPanel);
             this.watcher.enterViewport(() => {
                 this.$el.classList.add('hidden');
