@@ -6,6 +6,7 @@
     </button>
 </template>
 <script>
+import scrollmonitor from 'scrollmonitor';
 export default {
     props: {
         buttonClasses: {
@@ -21,6 +22,28 @@ export default {
         },
         iconAfterClass: {
             type: [Array, String]
+        },
+        hideOnLastPanel: {
+            type: Boolean,
+            default: true
+        }
+    },
+    data() {
+        return {
+            watcher: null
+        }
+    },
+    mounted() {
+        if (this.hideOnLastPanel) {
+            // find the last panel in the last section
+            const lastPanel = document.querySelector('vp--section:last-child vp--panel:last-child');
+            this.watcher = scrollmonitor.create(lastPanel);
+            this.watcher.enterViewport(() => {
+                this.$el.classList.add('hidden');
+            });
+            this.watcher.exitViewport(() => {
+                this.$el.classList.remove('hidden');
+            });
         }
     },
     methods: {
@@ -31,4 +54,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+    .hidden {
+        display: none;
+    }
 </style>
