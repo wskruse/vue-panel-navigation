@@ -33,7 +33,7 @@ export default {
             watcher: null
         }
     },
-    after() {
+    mounted() {
         if (this.hideOnLastPanel) {
             // find the last panel in the last section
             const interval = setInterval(() => {
