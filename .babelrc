@@ -3,7 +3,7 @@
         ["env", {
             "modules": false,
             "targets": {
-                "browsers": ["> 2%"],
+                "browsers": ["> 2%", "IE 11"],
                 "uglify": true
             }
         }]
