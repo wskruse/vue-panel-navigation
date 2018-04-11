@@ -37,7 +37,7 @@ export default {
             } else {
                 let vm = this;
                 this.$emit('sectionclicked', section, $event, function () {
-                    this.scrollTo(section);
+                    vm.scrollTo(section);
                 });
             }
         },

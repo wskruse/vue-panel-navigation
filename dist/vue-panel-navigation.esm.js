@@ -43,8 +43,9 @@ var NavMixin = {
                 // handle the click ourselves
                 this.scrollTo(section);
             } else {
+                var vm = this;
                 this.$emit('sectionclicked', section, $event, function () {
-                    this.scrollTo(section);
+                    vm.scrollTo(section);
                 });
             }
         },
@@ -119,7 +120,7 @@ var OffsetMixin = {
 
 var Section = { render: function render() {
         var _vm = this;var _h = _vm.$createElement;var _c = _vm._self._c || _h;return _c('div', { class: ['vp--section', { 'vp--active': _vm.section.active }] }, [_vm._t("default")], 2);
-    }, staticRenderFns: [], _scopeId: 'data-v-1d12b885',
+    }, staticRenderFns: [], _scopeId: 'data-v-8fbe9336',
     mixins: [OffsetMixin],
     props: {
         sortIndex: {
@@ -155,7 +156,7 @@ var Section = { render: function render() {
 
 var Panel = { render: function render() {
         var _vm = this;var _h = _vm.$createElement;var _c = _vm._self._c || _h;return _c('div', { staticClass: "vp--panel" }, [_vm._t("default")], 2);
-    }, staticRenderFns: [], _scopeId: 'data-v-839543b8',
+    }, staticRenderFns: [], _scopeId: 'data-v-d32d57f8',
     mixins: [OffsetMixin],
     props: {
         sortIndex: {
@@ -221,7 +222,7 @@ var Panel = { render: function render() {
 
 var NextButton = { render: function render() {
         var _vm = this;var _h = _vm.$createElement;var _c = _vm._self._c || _h;return _c('button', { class: _vm.buttonClasses, on: { "click": _vm.click } }, [_vm.iconBeforeClass ? _c('i', { class: _vm.iconBeforeClass }) : _vm._e(), _vm._v(" " + _vm._s(_vm.text) + " "), _vm.iconAfterClass ? _c('i', { class: _vm.iconAfterClass }) : _vm._e()]);
-    }, staticRenderFns: [], _scopeId: 'data-v-cbf394d6',
+    }, staticRenderFns: [], _scopeId: 'data-v-7b40ebb5',
     props: {
         buttonClasses: {
             type: [Array, String],

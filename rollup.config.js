@@ -23,7 +23,7 @@ export default [
         plugins: [
             vue({
                 compileTemplate: true,
-                css: 'dist/bundle.css'
+                css: 'dist/vue-panel-navigation.css'
             }),
             babel({
                 exclude: ['node_modules/**'],
