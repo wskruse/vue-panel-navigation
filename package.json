@@ -2,13 +2,11 @@
   "name": "vue-panel-navigation",
   "version": "0.1.0",
   "description": "A vue fullscreen-esque navigation plugin",
-  "main": "dist/index.js",
-  "module": "src/index.js",
+  "main": "dist/vue-panel-navigation.cjs.js",
+  "module": "dist/vue-panel-navigation.esm.js",
+  "browser": "dist/vue-panel-navigation.umd.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "prod": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "serve": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js"
+    "build": "rollup -c"
   },
   "repository": {
     "type": "git",
@@ -26,23 +24,34 @@
   },
   "homepage": "https://github.com/pxslip/vue-panel-navigation#readme",
   "devDependencies": {
+    "babel-preset-env": "^1.6.1",
     "cross-env": "^5.1.4",
     "eslint": "^4.18.2",
     "husky": "^0.15.0-rc.12",
-    "laravel-mix": "^2.1.9",
-    "rollup": "^0.57.1"
+    "parse5": "^4.0.0",
+    "rollup": "^0.57.1",
+    "rollup-plugin-babel": "^3.0.3",
+    "rollup-plugin-buble": "^0.19.2",
+    "rollup-plugin-commonjs": "^9.1.0",
+    "rollup-plugin-node-resolve": "^3.3.0",
+    "rollup-plugin-vue": "^3.0.0",
+    "vue": "^2.5.16"
   },
   "dependencies": {
+    "babel-core": "^6.26.0",
     "lodash.get": "^4.4.2",
     "scrollmonitor": "^1.2.4",
     "shortid": "^2.2.8",
     "smoothscroll": "^0.4.0",
-    "vue": "^2.5.16",
-    "vue-directive-tooltip": "^1.4.5"
+    "vue-directive-tooltip": "^1.4.5",
+    "vue-template-compiler": "^2.5.16"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run dev && git add dist/"
+      "pre-commit": "npm run build && git add dist/"
     }
-  }
+  },
+  "files": [
+    "dist"
+  ]
 }

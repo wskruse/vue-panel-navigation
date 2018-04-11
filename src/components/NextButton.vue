@@ -11,7 +11,7 @@ export default {
     props: {
         buttonClasses: {
             type: [Array, String],
-            default: () => ['vp--next']
+            default: function() {return ['vp--next'];} 
         },
         text: {
             type: String,
