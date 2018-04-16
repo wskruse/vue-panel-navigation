@@ -196,9 +196,9 @@ var Panel = { render: function render() {
             return this.sectionUuid;
         },
         makeActive: function makeActive() {
-            vm.$el.classList.add('vp--active');
-            vm.$setActivePanel(vm.uuid, vm.getSectionUuid());
-            vm.$setActiveSection(vm.getSectionUuid());
+            this.$el.classList.add('vp--active');
+            this.$setActivePanel(this.uuid, this.getSectionUuid());
+            this.$setActiveSection(this.getSectionUuid());
         }
     },
     mounted: function mounted() {
