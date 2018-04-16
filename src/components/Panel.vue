@@ -44,6 +44,11 @@
                     this.sectionUuid = this.section.dataset.uuid;
                 }
                 return this.sectionUuid;
+            },
+            makeActive() {
+                vm.$el.classList.add('vp--active');
+                vm.$setActivePanel(vm.uuid, vm.getSectionUuid());
+                vm.$setActiveSection(vm.getSectionUuid());
             }
         },
         mounted() {
@@ -61,12 +66,15 @@
                     bottom: this.offsetBottom - baseOffset
                 }
             );
-            watcher.enterViewport(function () {
-                vm.$el.classList.add('vp--active');
-                vm.$setActivePanel(vm.uuid, vm.getSectionUuid());
-                vm.$setActiveSection(vm.getSectionUuid());
-            });
             scrollmonitor.update();
+            watcher.enterViewport(function () {
+                vm.makeActive();
+            });
+            this.$nextTick(function () {
+                if (watcher.isInViewport) {
+                    vm.makeActive();
+                }
+            })
         },
         destroyed() {
             this.watcher.destroy();
