@@ -1,5 +1,6 @@
 import babel from 'rollup-plugin-babel';
 import vue from 'rollup-plugin-vue';
+import commonjs from 'rollup-plugin-commonjs';
 import pkg from './package.json';
 
 export default [
@@ -10,7 +11,16 @@ export default [
     // the `targets` option which can specify `dest` and `format`)
     {
         input: 'src/index.js',
-        external: ['ms'],
+        external: [
+            'ms',
+            'vue',
+            'scrollmonitor',
+            'shortid',
+            'smoothscroll',
+            'vue-directive-tooltip',
+            'vue-directive-tooltip/dist/vueDirectiveTooltip.css',
+            'lodash.get'
+        ],
         output: [{
                 file: pkg.main,
                 format: 'cjs'
@@ -27,7 +37,8 @@ export default [
             }),
             babel({
                 exclude: ['node_modules/**'],
-            })
+            }),
+            commonjs()
         ]
     }
 ];
