@@ -9,7 +9,7 @@ import shortid from 'shortid';
 import get from 'lodash.get';
 import smoothscroll from 'smoothscroll';
 import Tooltip from 'vue-directive-tooltip';
-import 'vue-directive-tooltip/css/index.css';
+import 'vue-directive-tooltip/dist/vueDirectiveTooltip.css';
 
 export default function install(Vue, options) {
     let plugin = install;
