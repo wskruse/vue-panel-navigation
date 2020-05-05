@@ -69,7 +69,7 @@ var NavMixin = {
 
 //
 var script = {
-    mixins: [NavMixin]
+  mixins: [NavMixin]
 };
 
 function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier
@@ -224,7 +224,7 @@ var __vue_render__ = function __vue_render__() {
     return _c("li", {
       key: index,
       class: [_vm.classes.dotSectionLi, { active: section.active }],
-      attrs: { "aria-label": section.title, title: section.title }
+      attrs: { "aria-title": section.title }
     }, [_c("a", {
       directives: [{
         name: "tooltip",
@@ -238,11 +238,10 @@ var __vue_render__ = function __vue_render__() {
           return _vm.sectionClicked(section.element, $event);
         }
       }
-    }), _vm._v(" "), _c("ul", { class: _vm.classes.dotPanelUl }, _vm._l(_vm.panels[section.element.dataset.uuid], function (panel, index) {
-      return !panel.excludeFromNav ? _c("li", {
+    }), _vm._v(" "), _c("ul", { class: _vm.classes.dotPanelUl }, [_vm._l(_vm.panels[section.element.dataset.uuid], function (panel, index) {
+      return [!panel.excludeFromNav ? _c("li", {
         key: index,
-        class: [_vm.classes.dotPanelLi, { active: panel.active }],
-        attrs: { "aria-label": panel.title, title: panel.title }
+        class: [_vm.classes.dotPanelLi, { active: panel.active }]
       }, [_c("a", {
         directives: [{
           name: "tooltip",
@@ -251,13 +250,14 @@ var __vue_render__ = function __vue_render__() {
           expression: "panel.title",
           modifiers: { right: true }
         }],
+        attrs: { "aria-label": panel.title },
         on: {
           click: function click($event) {
             return _vm.panelClicked(panel.element, $event);
           }
         }
-      })]) : _vm._e();
-    }), 0)]);
+      })]) : _vm._e()];
+    })], 2)]);
   }), 0);
 };
 var __vue_staticRenderFns__ = [];
@@ -266,7 +266,7 @@ __vue_render__._withStripped = true;
 /* style */
 var __vue_inject_styles__ = function __vue_inject_styles__(inject) {
   if (!inject) return;
-  inject("data-v-48cdcdbd_0", { source: "\n\n/*# sourceMappingURL=DotsNav.vue.map */", map: { "version": 3, "sources": ["DotsNav.vue"], "names": [], "mappings": ";;AAEA,sCAAsC", "file": "DotsNav.vue" }, media: undefined });
+  inject("data-v-36c42d54_0", { source: "\n\n/*# sourceMappingURL=DotsNav.vue.map */", map: { "version": 3, "sources": ["DotsNav.vue"], "names": [], "mappings": ";;AAEA,sCAAsC", "file": "DotsNav.vue" }, media: undefined });
 };
 /* scoped */
 var __vue_scope_id__ = undefined;
@@ -276,7 +276,9 @@ var __vue_module_identifier__ = undefined;
 var __vue_is_functional_template__ = false;
 /* style inject SSR */
 
-var DotsNav = normalizeComponent_1({ render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ }, __vue_inject_styles__, __vue_script__, __vue_scope_id__, __vue_is_functional_template__, __vue_module_identifier__, browser, undefined);
+/* style inject shadow dom */
+
+var __vue_component__ = normalizeComponent_1({ render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ }, __vue_inject_styles__, __vue_script__, __vue_scope_id__, __vue_is_functional_template__, __vue_module_identifier__, false, browser, undefined, undefined);
 
 //
 var script$1 = {
@@ -333,7 +335,7 @@ __vue_render__$1._withStripped = true;
 /* style */
 var __vue_inject_styles__$1 = function __vue_inject_styles__(inject) {
   if (!inject) return;
-  inject("data-v-571f7176_0", { source: "\n\n/*# sourceMappingURL=TextNav.vue.map */", map: { "version": 3, "sources": ["TextNav.vue"], "names": [], "mappings": ";;AAEA,sCAAsC", "file": "TextNav.vue" }, media: undefined });
+  inject("data-v-0b00448f_0", { source: "\n\n/*# sourceMappingURL=TextNav.vue.map */", map: { "version": 3, "sources": ["TextNav.vue"], "names": [], "mappings": ";;AAEA,sCAAsC", "file": "TextNav.vue" }, media: undefined });
 };
 /* scoped */
 var __vue_scope_id__$1 = undefined;
@@ -343,7 +345,9 @@ var __vue_module_identifier__$1 = undefined;
 var __vue_is_functional_template__$1 = false;
 /* style inject SSR */
 
-var TextNav = normalizeComponent_1({ render: __vue_render__$1, staticRenderFns: __vue_staticRenderFns__$1 }, __vue_inject_styles__$1, __vue_script__$1, __vue_scope_id__$1, __vue_is_functional_template__$1, __vue_module_identifier__$1, browser, undefined);
+/* style inject shadow dom */
+
+var __vue_component__$1 = normalizeComponent_1({ render: __vue_render__$1, staticRenderFns: __vue_staticRenderFns__$1 }, __vue_inject_styles__$1, __vue_script__$1, __vue_scope_id__$1, __vue_is_functional_template__$1, __vue_module_identifier__$1, false, browser, undefined, undefined);
 
 var OffsetMixin = {
     props: {
@@ -409,17 +413,19 @@ __vue_render__$2._withStripped = true;
 /* style */
 var __vue_inject_styles__$2 = function __vue_inject_styles__(inject) {
   if (!inject) return;
-  inject("data-v-062fe9f2_0", { source: "\n\n/*# sourceMappingURL=Section.vue.map */", map: { "version": 3, "sources": ["Section.vue"], "names": [], "mappings": ";;AAEA,sCAAsC", "file": "Section.vue" }, media: undefined });
+  inject("data-v-04757acb_0", { source: "\n\n/*# sourceMappingURL=Section.vue.map */", map: { "version": 3, "sources": ["Section.vue"], "names": [], "mappings": ";;AAEA,sCAAsC", "file": "Section.vue" }, media: undefined });
 };
 /* scoped */
-var __vue_scope_id__$2 = "data-v-062fe9f2";
+var __vue_scope_id__$2 = "data-v-04757acb";
 /* module identifier */
 var __vue_module_identifier__$2 = undefined;
 /* functional template */
 var __vue_is_functional_template__$2 = false;
 /* style inject SSR */
 
-var Section = normalizeComponent_1({ render: __vue_render__$2, staticRenderFns: __vue_staticRenderFns__$2 }, __vue_inject_styles__$2, __vue_script__$2, __vue_scope_id__$2, __vue_is_functional_template__$2, __vue_module_identifier__$2, browser, undefined);
+/* style inject shadow dom */
+
+var __vue_component__$2 = normalizeComponent_1({ render: __vue_render__$2, staticRenderFns: __vue_staticRenderFns__$2 }, __vue_inject_styles__$2, __vue_script__$2, __vue_scope_id__$2, __vue_is_functional_template__$2, __vue_module_identifier__$2, false, browser, undefined, undefined);
 
 //
 var script$3 = {
@@ -510,17 +516,19 @@ __vue_render__$3._withStripped = true;
 /* style */
 var __vue_inject_styles__$3 = function __vue_inject_styles__(inject) {
   if (!inject) return;
-  inject("data-v-80adf1cc_0", { source: "\n\n/*# sourceMappingURL=Panel.vue.map */", map: { "version": 3, "sources": ["Panel.vue"], "names": [], "mappings": ";;AAEA,oCAAoC", "file": "Panel.vue" }, media: undefined });
+  inject("data-v-65621321_0", { source: "\n\n/*# sourceMappingURL=Panel.vue.map */", map: { "version": 3, "sources": ["Panel.vue"], "names": [], "mappings": ";;AAEA,oCAAoC", "file": "Panel.vue" }, media: undefined });
 };
 /* scoped */
-var __vue_scope_id__$3 = "data-v-80adf1cc";
+var __vue_scope_id__$3 = "data-v-65621321";
 /* module identifier */
 var __vue_module_identifier__$3 = undefined;
 /* functional template */
 var __vue_is_functional_template__$3 = false;
 /* style inject SSR */
 
-var Panel = normalizeComponent_1({ render: __vue_render__$3, staticRenderFns: __vue_staticRenderFns__$3 }, __vue_inject_styles__$3, __vue_script__$3, __vue_scope_id__$3, __vue_is_functional_template__$3, __vue_module_identifier__$3, browser, undefined);
+/* style inject shadow dom */
+
+var __vue_component__$3 = normalizeComponent_1({ render: __vue_render__$3, staticRenderFns: __vue_staticRenderFns__$3 }, __vue_inject_styles__$3, __vue_script__$3, __vue_scope_id__$3, __vue_is_functional_template__$3, __vue_module_identifier__$3, false, browser, undefined, undefined);
 
 //
 var script$4 = {
@@ -594,17 +602,19 @@ __vue_render__$4._withStripped = true;
 /* style */
 var __vue_inject_styles__$4 = function __vue_inject_styles__(inject) {
   if (!inject) return;
-  inject("data-v-89bd20e6_0", { source: ".hidden[data-v-89bd20e6] {\n  display: none;\n}\n\n/*# sourceMappingURL=NextButton.vue.map */", map: { "version": 3, "sources": ["/Users/hkruse/projects/vue-panel-navigation/src/components/NextButton.vue", "NextButton.vue"], "names": [], "mappings": "AA8DA;EACA,aAAA;AC7DA;;AAEA,yCAAyC", "file": "NextButton.vue", "sourcesContent": ["<template>\r\n    <button :class=\"buttonClasses\" @click=\"click\">\r\n        <i v-if=\"iconBeforeClass\" :class=\"iconBeforeClass\"></i>\r\n        {{text}}\r\n        <i v-if=\"iconAfterClass\" :class=\"iconAfterClass\"></i>\r\n    </button>\r\n</template>\r\n<script>\r\nimport scrollmonitor from 'scrollmonitor';\r\nexport default {\r\n    props: {\r\n        buttonClasses: {\r\n            type: [Array, String],\r\n            default: function() {return ['vp--next'];} \r\n        },\r\n        text: {\r\n            type: String,\r\n            default: 'Next'\r\n        },\r\n        iconBeforeClass: {\r\n            type: [Array, String]\r\n        },\r\n        iconAfterClass: {\r\n            type: [Array, String]\r\n        },\r\n        hideOnLastPanel: {\r\n            type: Boolean,\r\n            default: true\r\n        }\r\n    },\r\n    data() {\r\n        return {\r\n            watcher: null\r\n        }\r\n    },\r\n    mounted() {\r\n        if (this.hideOnLastPanel) {\r\n            // find the last panel in the last section\r\n            let vm = this;\r\n            const interval = setInterval(function () {\r\n                const lastPanel = document.querySelector('.vp--section:last-child .vp--panel:last-child');\r\n                if (lastPanel) {\r\n                    vm.watcher = scrollmonitor.create(lastPanel);\r\n                    vm.watcher.enterViewport(() => {\r\n                        vm.$el.classList.add('hidden');\r\n                    });\r\n                    vm.watcher.exitViewport(() => {\r\n                        vm.$el.classList.remove('hidden');\r\n                    });\r\n                    clearInterval(interval);\r\n                }\r\n            }, 100)\r\n        }\r\n    },\r\n    methods: {\r\n        click() {\r\n            this.$scrollToNextPanel();\r\n        }\r\n    }\r\n}\r\n</script>\r\n<style lang=\"scss\" scoped>\r\n    .hidden {\r\n        display: none;\r\n    }\r\n</style>\r\n", ".hidden {\n  display: none;\n}\n\n/*# sourceMappingURL=NextButton.vue.map */"] }, media: undefined });
+  inject("data-v-7d9bad58_0", { source: ".hidden[data-v-7d9bad58] {\n  display: none;\n}\n\n/*# sourceMappingURL=NextButton.vue.map */", map: { "version": 3, "sources": ["D:\\projects\\vue-panel-navigation\\src\\components\\NextButton.vue", "NextButton.vue"], "names": [], "mappings": "AA8DA;EACA,aAAA;AC7DA;;AAEA,yCAAyC", "file": "NextButton.vue", "sourcesContent": ["<template>\r\n    <button :class=\"buttonClasses\" @click=\"click\">\r\n        <i v-if=\"iconBeforeClass\" :class=\"iconBeforeClass\"></i>\r\n        {{text}}\r\n        <i v-if=\"iconAfterClass\" :class=\"iconAfterClass\"></i>\r\n    </button>\r\n</template>\r\n<script>\r\nimport scrollmonitor from 'scrollmonitor';\r\nexport default {\r\n    props: {\r\n        buttonClasses: {\r\n            type: [Array, String],\r\n            default: function() {return ['vp--next'];} \r\n        },\r\n        text: {\r\n            type: String,\r\n            default: 'Next'\r\n        },\r\n        iconBeforeClass: {\r\n            type: [Array, String]\r\n        },\r\n        iconAfterClass: {\r\n            type: [Array, String]\r\n        },\r\n        hideOnLastPanel: {\r\n            type: Boolean,\r\n            default: true\r\n        }\r\n    },\r\n    data() {\r\n        return {\r\n            watcher: null\r\n        }\r\n    },\r\n    mounted() {\r\n        if (this.hideOnLastPanel) {\r\n            // find the last panel in the last section\r\n            let vm = this;\r\n            const interval = setInterval(function () {\r\n                const lastPanel = document.querySelector('.vp--section:last-child .vp--panel:last-child');\r\n                if (lastPanel) {\r\n                    vm.watcher = scrollmonitor.create(lastPanel);\r\n                    vm.watcher.enterViewport(() => {\r\n                        vm.$el.classList.add('hidden');\r\n                    });\r\n                    vm.watcher.exitViewport(() => {\r\n                        vm.$el.classList.remove('hidden');\r\n                    });\r\n                    clearInterval(interval);\r\n                }\r\n            }, 100)\r\n        }\r\n    },\r\n    methods: {\r\n        click() {\r\n            this.$scrollToNextPanel();\r\n        }\r\n    }\r\n}\r\n</script>\r\n<style lang=\"scss\" scoped>\r\n    .hidden {\r\n        display: none;\r\n    }\r\n</style>\r\n", ".hidden {\n  display: none;\n}\n\n/*# sourceMappingURL=NextButton.vue.map */"] }, media: undefined });
 };
 /* scoped */
-var __vue_scope_id__$4 = "data-v-89bd20e6";
+var __vue_scope_id__$4 = "data-v-7d9bad58";
 /* module identifier */
 var __vue_module_identifier__$4 = undefined;
 /* functional template */
 var __vue_is_functional_template__$4 = false;
 /* style inject SSR */
 
-var NextButton = normalizeComponent_1({ render: __vue_render__$4, staticRenderFns: __vue_staticRenderFns__$4 }, __vue_inject_styles__$4, __vue_script__$4, __vue_scope_id__$4, __vue_is_functional_template__$4, __vue_module_identifier__$4, browser, undefined);
+/* style inject shadow dom */
+
+var __vue_component__$4 = normalizeComponent_1({ render: __vue_render__$4, staticRenderFns: __vue_staticRenderFns__$4 }, __vue_inject_styles__$4, __vue_script__$4, __vue_scope_id__$4, __vue_is_functional_template__$4, __vue_module_identifier__$4, false, browser, undefined, undefined);
 
 function install(Vue, options) {
     var plugin = install;
@@ -771,11 +781,11 @@ function install(Vue, options) {
         return Vue.vp.sections;
     };
 
-    Vue.component('VpDotsNav', DotsNav);
-    Vue.component('VpTextNav', TextNav);
-    Vue.component('VpPanel', Panel);
-    Vue.component('VpSection', Section);
-    Vue.component('VpNext', NextButton);
+    Vue.component('VpDotsNav', __vue_component__);
+    Vue.component('VpTextNav', __vue_component__$1);
+    Vue.component('VpPanel', __vue_component__$3);
+    Vue.component('VpSection', __vue_component__$2);
+    Vue.component('VpNext', __vue_component__$4);
     Vue.use(Tooltip);
 }
 
