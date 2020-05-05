@@ -35,16 +35,16 @@
     "rollup-plugin-commonjs": "^9.3.4",
     "rollup-plugin-node-resolve": "^3.4.0",
     "rollup-plugin-vue": "^5.0.1",
-    "vue": "^2.6.10"
+    "vue": "^2.6.11"
   },
   "dependencies": {
     "babel-core": "^6.26.3",
     "lodash.get": "^4.4.2",
     "scrollmonitor": "^1.2.4",
-    "shortid": "^2.2.8",
+    "shortid": "^2.2.15",
     "smoothscroll": "^0.4.0",
     "vue-directive-tooltip": "^1.6.2",
-    "vue-template-compiler": "^2.5.16"
+    "vue-template-compiler": "^2.6.11"
   },
   "husky": {
     "hooks": {
