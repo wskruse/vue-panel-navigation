@@ -4,7 +4,7 @@
       v-for="(section, index) in sections"
       :key="index"
       :class="[classes.dotSectionLi, {'active': section.active}]"
-      :aria-title="section.title"
+      :title="section.title"
     >
       <a
         @click="sectionClicked(section.element, $event)"
