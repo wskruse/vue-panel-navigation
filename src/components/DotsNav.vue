@@ -3,19 +3,21 @@
     <li
       v-for="(section, index) in sections"
       :key="index"
-      :class="[classes.dotSectionLi, {'active': section.active}]"
-      :title="section.title"
+      :class="[classes.dotSectionLi, { active: section.active }]"
+      :aria-label="section.title"
     >
       <a
         @click="sectionClicked(section.element, $event)"
         v-tooltip.right="section.title"
       ></a>
       <ul :class="classes.dotPanelUl">
-        <template v-for="(panel, index) in panels[section.element.dataset.uuid]">
+        <template
+          v-for="(panel, index) in panels[section.element.dataset.uuid]"
+        >
           <li
             :key="index"
-            v-if="! panel.excludeFromNav"
-            :class="[classes.dotPanelLi, {'active': panel.active}]"
+            v-if="!panel.excludeFromNav"
+            :class="[classes.dotPanelLi, { active: panel.active }]"
           >
             <a
               @click="panelClicked(panel.element, $event)"
