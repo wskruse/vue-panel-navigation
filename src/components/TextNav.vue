@@ -9,16 +9,17 @@
         >
             <a @click="sectionClicked(section.element, $event)">{{ section.title }} <i v-if="showExpander" :class="expanderClass"></i></a>
             <ul :class="classes.textPanelUl">
-                <li
-                    v-for="(panel, index) in panels[section.element.dataset.uuid]"
-                    :key="index"
-                    v-if="! panel.excludeFromNav"
-                    :aria-label="panel.title"
-                    :title="panel.title"
-                    :class="[classes.textPanelLi, {'active': panel.active}]"
-                >
-                    <a @click="panelClicked(panel.element, $event)">{{ panel.title }}</a>
-                </li>
+                <template v-for="(panel, index) in panels[section.element.dataset.uuid]">
+                    <li
+                        v-if="! panel.excludeFromNav"
+                        :key="`vp_text_nav_li_${index}`"
+                        :aria-label="panel.title"
+                        :title="panel.title"
+                        :class="[classes.textPanelLi, {'active': panel.active}]"
+                    >
+                        <a @click="panelClicked(panel.element, $event)" v-bind="linkAttrs">{{ panel.title }}</a>
+                    </li>
+                </template>
             </ul>
         </li>
     </ul>
@@ -36,6 +37,10 @@ export default {
         expanderClass: {
             type: String,
             default: 'fa fa-angle-down'
+        },
+        linkAttrs: {
+            type: Object,
+            default: {},
         }
     },
     mixins: [NavMixin]
